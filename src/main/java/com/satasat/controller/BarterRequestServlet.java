@@ -54,6 +54,13 @@ public class BarterRequestServlet extends HttpServlet {
                         sess.setRequestId(id);
                         sess.setStatus("PENDING");
                         sessionDAO.create(sess);
+
+                        // Directly send Jitsi link to both user chat
+                        Message msg = new Message();
+                        msg.setRequestId(id);
+                        msg.setSenderId(user.getId());
+                        msg.setContent("System: Video call generated! Paste this link in your Sessions tab to connect: https://meet.jit.si/satasat-session-" + id);
+                        new MessageDAO().create(msg);
                     }
                 }
                 break;

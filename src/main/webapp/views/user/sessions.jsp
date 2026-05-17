@@ -51,8 +51,29 @@
 
                             <c:if test="${s.status eq 'PENDING' or s.status eq 'SCHEDULED'}">
                                 <a href="${pageContext.request.contextPath}/user/messages?requestId=${s.requestId}" class="btn-sm btn-success mt-8">
-                                    <i class="fas fa-comments"></i> Chat & Video Call
+                                    <i class="fas fa-comments"></i> Go to Chat Room
                                 </a>
+                            </c:if>
+
+                            <%-- Video Call Link Upload & Verification --%>
+                            <c:if test="${s.status eq 'SCHEDULED'}">
+                                <div class="videocall-verify-box" style="margin-top: 16px; padding: 14px; background: var(--primary-lt); border-radius: var(--radius-sm); border: 1.5px dashed var(--primary); text-align: left;">
+                                    <h4 style="color: var(--primary); font-size: 0.9rem; margin-bottom: 6px; font-weight: 700;">
+                                        <i class="fas fa-video"></i> Video Call Verification
+                                    </h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-mid); margin-bottom: 10px; line-height: 1.4;">
+                                        Paste the Jitsi video call link sent to your chat to verify and join the classroom:
+                                    </p>
+                                    <div style="display: flex; gap: 8px;">
+                                        <input type="text" id="vlink-${s.id}" class="form-control" placeholder="https://meet.jit.si/..." style="padding: 6px 12px; font-size: 0.8rem; height: auto;" autocomplete="off">
+                                        <button class="btn-sm btn-primary-sm" onclick="verifyVideoLink(${s.id}, ${s.requestId}, 'https://meet.jit.si/satasat-session-${s.requestId}')" style="white-space: nowrap; padding: 6px 12px; border-radius: var(--radius-sm);">
+                                            <i class="fas fa-plug"></i> Verify & Join
+                                        </button>
+                                    </div>
+                                    <a href="${pageContext.request.contextPath}/user/messages?requestId=${s.requestId}" style="font-size: 0.78rem; color: var(--primary); font-weight: 600; display: inline-block; margin-top: 8px;">
+                                        <i class="fas fa-comments"></i> Find Link in Chat Room
+                                    </a>
+                                </div>
                             </c:if>
 
                                 <%-- Mark complete --%>
@@ -132,5 +153,73 @@
         </form>
     </div>
 </div>
+
+<!-- Success Video Call Modal -->
+<div class="modal-overlay" id="successCallModal">
+    <div class="modal-box" style="text-align: center; padding: 32px 24px; max-width: 460px;">
+        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 16px; display: block;"></i>
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--text);">Link Verified!</h2>
+        <p style="color: var(--text-mid); font-size: 0.92rem; margin-bottom: 24px; line-height: 1.5;">
+            Awesome! The video call link matches perfectly. Directing you to your Jitsi video classroom now...
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px;">
+            <button type="button" class="btn-primary" id="joinCallBtn" style="padding: 10px 24px; font-size: 0.9rem;">
+                <i class="fas fa-video"></i> Join Classroom Now
+            </button>
+            <button type="button" class="btn-outline" onclick="closeModal('successCallModal')" style="padding: 10px 24px; font-size: 0.9rem;">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Error (Sorry) Video Call Modal -->
+<div class="modal-overlay" id="errorCallModal">
+    <div class="modal-box" style="text-align: center; padding: 32px 24px; max-width: 440px;">
+        <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: var(--accent); margin-bottom: 16px; display: block;"></i>
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--text);">Sorry! Link Mismatch</h2>
+        <p style="color: var(--text-mid); font-size: 0.92rem; margin-bottom: 24px; line-height: 1.5;">
+            This is not the correct video call link for this session. Please check your chat room, copy the exact generated Jitsi link, and try again.
+        </p>
+        <button type="button" class="btn-primary btn-block" onclick="closeModal('errorCallModal')" style="padding: 10px 24px; font-size: 0.9rem; justify-content: center;">
+            <i class="fas fa-arrow-left"></i> Let me check again
+        </button>
+    </div>
+</div>
+
+<script>
+function verifyVideoLink(sessionId, requestId, expectedLink) {
+    const input = document.getElementById('vlink-' + sessionId);
+    if (!input) return;
+    const pastedLink = input.value.trim();
+    
+    // Normalize comparison: ignore casing, trim spaces, and ensure it contains the unique session room ID
+    const roomPattern = 'satasat-session-' + requestId;
+    const isValid = pastedLink.toLowerCase() === expectedLink.toLowerCase() || 
+                    (pastedLink.includes('meet.jit.si') && pastedLink.includes(roomPattern));
+                    
+    if (isValid) {
+        // Correct link! Set join button listener and open modal
+        const joinBtn = document.getElementById('joinCallBtn');
+        if (joinBtn) {
+            joinBtn.onclick = function() {
+                window.open(expectedLink, '_blank');
+                closeModal('successCallModal');
+            };
+        }
+        openModal('successCallModal');
+        
+        // Auto-redirect to Jitsi room after 2.5 seconds
+        setTimeout(() => {
+            const m = document.getElementById('successCallModal');
+            if (m && m.classList.contains('open')) {
+                window.open(expectedLink, '_blank');
+                closeModal('successCallModal');
+            }
+        }, 2500);
+    } else {
+        // Incorrect link! Open Sorry Modal
+        openModal('errorCallModal');
+    }
+}
+</script>
 
 <%@ include file="../includes/footer.jsp" %>
