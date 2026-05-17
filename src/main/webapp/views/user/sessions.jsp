@@ -66,7 +66,7 @@
                                     </p>
                                     <div style="display: flex; gap: 8px;">
                                         <input type="text" id="vlink-${s.id}" class="form-control" placeholder="https://meet.jit.si/..." style="padding: 6px 12px; font-size: 0.8rem; height: auto;" autocomplete="off">
-                                        <button class="btn-sm btn-primary-sm" onclick="verifyVideoLink(${s.id}, ${s.requestId}, 'https://meet.jit.si/satasat-session-${s.requestId}')" style="white-space: nowrap; padding: 6px 12px; border-radius: var(--radius-sm);">
+                                        <button class="btn-sm btn-primary-sm" onclick="verifyVideoLink('${s.id}', '${s.requestId}', 'https://meet.jit.si/satasat-session-${s.requestId}')" style="white-space: nowrap; padding: 6px 12px; border-radius: var(--radius-sm);">
                                             <i class="fas fa-plug"></i> Verify & Join
                                         </button>
                                     </div>
@@ -97,7 +97,7 @@
                                 <c:choose>
                                     <c:when test="${not alreadyReviewed}">
                                         <button class="btn-sm btn-primary-sm mt-8"
-                                                onclick="openReview(${s.id}, ${revieweeId})">
+                                                onclick="openReview('${s.id}', '${revieweeId}')">
                                             <i class="fas fa-star"></i> Leave Review
                                         </button>
                                     </c:when>
