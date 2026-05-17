@@ -126,11 +126,11 @@
 
                         const isMe = msg.senderId === currentUserId;
                         const msgHtml = `
-                            <div class="msg-wrapper ${isMe ? 'msg-sent' : 'msg-received'}" data-msg-id="${msg.id}">
+                            <div class="msg-wrapper \${isMe ? 'msg-sent' : 'msg-received'}" data-msg-id="\${msg.id}">
                                 <div class="msg-bubble">
-                                    ${escapeHTML(msg.content)}
+                                    \${escapeHTML(msg.content)}
                                 </div>
-                                <span class="msg-meta">${msg.sentAt}</span>
+                                <span class="msg-meta">\${msg.sentAt}</span>
                             </div>
                         `;
                         chatMsgs.insertAdjacentHTML('beforeend', msgHtml);
@@ -173,11 +173,11 @@
 
                         const isMe = msg.senderId === currentUserId;
                         const msgHtml = `
-                            <div class="msg-wrapper ${isMe ? 'msg-sent' : 'msg-received'}" data-msg-id="${msg.id}">
+                            <div class="msg-wrapper \${isMe ? 'msg-sent' : 'msg-received'}" data-msg-id="\${msg.id}">
                                 <div class="msg-bubble">
-                                    ${escapeHTML(msg.content)}
+                                    \${escapeHTML(msg.content)}
                                 </div>
-                                <span class="msg-meta">${msg.sentAt}</span>
+                                <span class="msg-meta">\${msg.sentAt}</span>
                             </div>
                         `;
                         chatMsgs.insertAdjacentHTML('beforeend', msgHtml);
