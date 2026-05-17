@@ -98,7 +98,7 @@
         lastMsgId = parseInt(msgWrappers[msgWrappers.length - 1].getAttribute('data-msg-id'));
     }
 
-    const currentUserId = ${sessionScope.loggedInUser.id};
+    const currentUserId = parseInt('${sessionScope.loggedInUser.id}', 10);
 
     // HTML Escaping Helper for security
     function escapeHTML(str) {
