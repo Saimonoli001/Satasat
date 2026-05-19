@@ -28,7 +28,7 @@ public class ValidationUtilsTest {
     public void testValidPassword() {
         assertTrue(ValidationUtils.validPassword("pass1234"));
         assertTrue(ValidationUtils.validPassword("1234abcd!"));
-        assertFalse(ValidationUtils.validPassword("short1")); // less than 8 chars
+        assertFalse(ValidationUtils.validPassword("short1")); 
         assertFalse(ValidationUtils.validPassword("onlyletters"));
         assertFalse(ValidationUtils.validPassword("1234567890"));
         assertFalse(ValidationUtils.validPassword(null));

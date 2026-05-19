@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.Filter;
 
-/**
- * Sets the HTTP session timeout to 30 minutes on every request.
- */
+
 @WebFilter("/*")
 public class SessionTimeoutFilter implements Filter {
 

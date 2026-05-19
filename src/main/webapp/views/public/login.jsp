@@ -23,7 +23,7 @@
         <div class="auth-card">
             <h2>Sign In</h2>
 
-            <%-- Flash messages --%>
+            
             <c:if test="${param.msg eq 'registered'}">
                 <div class="alert alert-success">
                     <i class="fas fa-check-circle"></i>
@@ -85,7 +85,7 @@
                 <a href="${pageContext.request.contextPath}/register">Sign up free</a>
             </p>
 
-            <%-- Test credentials helper for demo/grading --%>
+            
             <div class="cred-box">
                 <p><strong><i class="fas fa-key"></i> Test Credentials</strong></p>
                 <div class="cred-row">

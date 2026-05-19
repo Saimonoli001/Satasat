@@ -8,7 +8,7 @@
     <%@ include file="../includes/user-sidebar.jsp" %>
     <main class="dash-main">
 
-        <%-- Check partner details --%>
+        
         <c:set var="isRequester" value="${barterRequest.requesterId eq sessionScope.loggedInUser.id}"/>
         <c:set var="partnerId" value="${isRequester ? barterRequest.receiverId : barterRequest.requesterId}"/>
         <c:set var="partnerName" value="${isRequester ? barterRequest.receiverName : barterRequest.requesterName}"/>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="chat-container">
-            <!-- Left Info Panel -->
+            
             <div class="chat-thread-sidebar">
                 <div class="chat-partner-card">
                     <img src="${pageContext.request.contextPath}/images/profiles/${partnerImage}"
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <!-- Chat Area -->
+            
             <div class="chat-area">
                 <div class="chat-header">
                     <div class="chat-header-user">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <!-- Scrollable Messages -->
+                
                 <div class="chat-messages" id="chatMessages">
                     <c:forEach var="m" items="${messages}">
                         <c:set var="isMe" value="${m.senderId eq sessionScope.loggedInUser.id}"/>
@@ -69,7 +69,7 @@
                     </c:forEach>
                 </div>
 
-                <!-- Input area -->
+                
                 <div class="chat-input-container">
                     <form class="chat-input-form" id="chatForm" method="post" action="${pageContext.request.contextPath}/user/messages">
                         <input type="hidden" name="action" value="send">

@@ -11,7 +11,7 @@
     </div>
 
     <div class="browse-layout">
-        <!-- Filter Sidebar -->
+        
         <aside class="filter-panel">
             <div class="filter-card">
                 <h3><i class="fas fa-filter"></i> Filter Skills</h3>
@@ -53,7 +53,7 @@
             </div>
         </aside>
 
-        <!-- Results -->
+        
         <main class="browse-results">
             <div class="results-bar">
                 <span><strong>${fn:length(skills)}</strong> skill(s) found</span>

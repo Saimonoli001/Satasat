@@ -1,13 +1,13 @@
 package com.satasat.model;
 import java.sql.Timestamp;
 
-/** Maps to skills table. Contains joined fields for display. */
+
 public class Skill {
     private int id, userId, categoryId, viewCount;
     private String title, description, skillLevel, availability;
     private boolean active;
     private Timestamp createdAt, updatedAt;
-    // Joined from users + categories
+    
     private String userName, userProfileImage, categoryName, categoryIcon;
     private double userAvgRating;
 
@@ -44,7 +44,7 @@ public class Skill {
     public void setCategoryIcon(String v) { this.categoryIcon = v; }
     public double getUserAvgRating() { return userAvgRating; }
     public void setUserAvgRating(double v) { this.userAvgRating = v; }
-    /** Truncated description for card display */
+    
     public String getShortDescription() {
         if (description == null) return "";
         return description.length() > 110 ? description.substring(0, 110) + "…" : description;

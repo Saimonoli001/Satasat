@@ -55,7 +55,7 @@
                                 </a>
                             </c:if>
 
-                            <%-- Video Call Link Upload & Verification --%>
+                            
                             <c:if test="${s.status eq 'SCHEDULED'}">
                                 <div class="videocall-verify-box" style="margin-top: 16px; padding: 14px; background: var(--primary-lt); border-radius: var(--radius-sm); border: 1.5px dashed var(--primary); text-align: left;">
                                     <h4 style="color: var(--primary); font-size: 0.9rem; margin-bottom: 6px; font-weight: 700;">
@@ -76,7 +76,7 @@
                                 </div>
                             </c:if>
 
-                                <%-- Mark complete --%>
+                                
                             <c:if test="${s.status eq 'SCHEDULED'}">
                                 <form method="post" action="${pageContext.request.contextPath}/user/sessions"
                                       onsubmit="return confirm('Mark this session as completed?')">
@@ -88,7 +88,7 @@
                                 </form>
                             </c:if>
 
-                                <%-- Leave Review --%>
+                                
                             <c:if test="${s.status eq 'COMPLETED'}">
                                 <c:set var="uid"  value="${sessionScope.loggedInUser.id}"/>
                                 <c:set var="isRq" value="${s.requesterId eq uid}"/>
@@ -117,7 +117,7 @@
     </main>
 </div>
 
-<!-- Review Modal -->
+
 <div class="modal-overlay" id="reviewModal">
     <div class="modal-box">
         <div class="modal-hdr">
@@ -154,7 +154,7 @@
     </div>
 </div>
 
-<!-- Success Video Call Modal -->
+
 <div class="modal-overlay" id="successCallModal">
     <div class="modal-box" style="text-align: center; padding: 32px 24px; max-width: 460px;">
         <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 16px; display: block;"></i>
@@ -171,7 +171,7 @@
     </div>
 </div>
 
-<!-- Error (Sorry) Video Call Modal -->
+
 <div class="modal-overlay" id="errorCallModal">
     <div class="modal-box" style="text-align: center; padding: 32px 24px; max-width: 440px;">
         <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: var(--accent); margin-bottom: 16px; display: block;"></i>

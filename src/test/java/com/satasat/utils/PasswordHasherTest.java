@@ -12,9 +12,9 @@ public class PasswordHasherTest {
         String hash2 = PasswordHasher.hash(plain);
         
         assertNotNull(hash1);
-        assertEquals(64, hash1.length()); // SHA-256 hex string should be 64 characters
-        assertEquals(hash1, hash2); // Deterministic hashing
-        assertNotEquals(plain, hash1); // Ensure it's actually hashed
+        assertEquals(64, hash1.length()); 
+        assertEquals(hash1, hash2); 
+        assertNotEquals(plain, hash1); 
     }
 
     @Test

@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/** CRUD for the categories table. */
+
 public class CategoryDAO {
 
     public List<Category> findAll() {

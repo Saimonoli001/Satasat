@@ -1,7 +1,7 @@
 package com.satasat.model;
 import java.sql.Timestamp;
 
-/** Maps to categories table. */
+
 public class Category {
     private int id;
     private String name, description, icon;

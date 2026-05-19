@@ -16,7 +16,7 @@
             <div class="kpi-card kpi-orange"><i class="fas fa-calendar-check"></i><div><strong>${sessionsDone}</strong><span>Sessions Done</span></div></div>
         </div>
 
-        <!-- Completion Rate -->
+        
         <div class="analytics-card">
             <h2><i class="fas fa-percentage"></i> Exchange Completion Rate</h2>
             <c:set var="rate" value="${totalRequests > 0 ? completedCount * 100 / totalRequests : 0}"/>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <!-- Top 10 Demanded Skills Bar Chart -->
+        
         <div class="analytics-card">
             <h2><i class="fas fa-fire"></i> Top 10 Most Demanded Skills</h2>
             <div class="bar-chart">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <!-- Most Active Users -->
+        
         <div class="analytics-card">
             <h2><i class="fas fa-trophy"></i> Most Active Users</h2>
             <div class="bar-chart">

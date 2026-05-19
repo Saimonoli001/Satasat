@@ -5,7 +5,7 @@ import com.satasat.utils.DBConnection;
 import java.sql.*;
 import java.util.*;
 
-/** CRUD + search for the skills table. */
+
 public class SkillDAO {
 
     private static final String BASE_SQL =
@@ -49,7 +49,7 @@ public class SkillDAO {
         return list;
     }
 
-    /** Smart search: keyword (LIKE), categoryId (0 = any), minRating (0 = any). */
+    
     public List<Skill> search(String keyword, int categoryId, double minRating) {
         List<Skill> list = new ArrayList<>();
         StringBuilder sb = new StringBuilder(BASE_SQL +
@@ -140,7 +140,7 @@ public class SkillDAO {
         return 0;
     }
 
-    /** Returns top N skills by number of barter requests made for them. */
+    
     public List<Map<String,Object>> getTopDemanded(int limit) {
         List<Map<String,Object>> list = new ArrayList<>();
         String sql =

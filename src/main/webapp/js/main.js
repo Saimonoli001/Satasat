@@ -1,11 +1,8 @@
-/* ================================================================
-   SATASAT – MAIN JAVASCRIPT
-   CS5054NT Team Leo | Milestone 1
-   ================================================================ */
+
 
 'use strict';
 
-// ── Nav Dropdown ──────────────────────────────────────────────────
+
 function toggleDropdown(e) {
     e.stopPropagation();
     const dd = document.getElementById('userDropdown');
@@ -16,13 +13,13 @@ document.addEventListener('click', () => {
     if (dd) dd.classList.remove('open');
 });
 
-// ── Mobile Nav ────────────────────────────────────────────────────
+
 function toggleNav() {
     const nl = document.getElementById('navLinks');
     if (nl) nl.classList.toggle('open');
 }
 
-// ── Modal System ──────────────────────────────────────────────────
+
 function openModal(id) {
     const m = document.getElementById(id);
     if (!m) return;
@@ -35,14 +32,14 @@ function closeModal(id) {
     m.classList.remove('open');
     document.body.style.overflow = '';
 }
-// Close on backdrop click
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', e => {
             if (e.target === overlay) closeModal(overlay.id);
         });
     });
-    // Close on Escape
+    
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
             document.querySelectorAll('.modal-overlay.open')
@@ -51,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ── Password Toggle ───────────────────────────────────────────────
+
 function togglePw(fieldId, btn) {
     const f = document.getElementById(fieldId);
     if (!f) return;
@@ -65,7 +62,7 @@ function togglePw(fieldId, btn) {
     }
 }
 
-// ── Password Strength Meter ───────────────────────────────────────
+
 function checkStrength(pw) {
     let score = 0;
     if (pw.length >= 8)  score++;
@@ -96,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ── Client-side Register Validation ──────────────────────────────
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registerForm');
     if (!form) return;
@@ -152,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ── Login Validation ──────────────────────────────────────────────
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
     if (!form) return;
@@ -176,14 +173,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ── Error styling ─────────────────────────────────────────────────
+
 document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
     style.textContent = '.is-error { border-color: var(--danger) !important; box-shadow: 0 0 0 3px rgba(250,82,82,.12) !important; }';
     document.head.appendChild(style);
 });
 
-// ── Edit Skill Modal filler ───────────────────────────────────────
+
 function fillEdit(id, title, desc, level, avail, catId) {
     document.getElementById('editSkillId').value  = id;
     document.getElementById('editTitle').value    = title;
@@ -194,7 +191,7 @@ function fillEdit(id, title, desc, level, avail, catId) {
     openModal('editSkillModal');
 }
 
-// ── Edit Category Modal filler ────────────────────────────────────
+
 function fillEditCat(id, name, desc, icon, active) {
     document.getElementById('ecId').value    = id;
     document.getElementById('ecName').value  = name;
@@ -212,14 +209,14 @@ function setSelectVal(selectId, val) {
     }
 }
 
-// ── Request action modals ─────────────────────────────────────────
+
 function openCounter(requestId) {
     document.getElementById('counterReqId').value = requestId;
     openModal('counterModal');
 }
 function openSchedule(requestId) {
     document.getElementById('schedReqId').value = requestId;
-    // Set min datetime to now
+    
     const dt = document.querySelector('#scheduleModal input[type="datetime-local"]');
     if (dt) {
         const now = new Date();
@@ -229,7 +226,7 @@ function openSchedule(requestId) {
     openModal('scheduleModal');
 }
 
-// ── Review modal ──────────────────────────────────────────────────
+
 function openReview(sessionId, revieweeId) {
     document.getElementById('rvSessionId').value  = sessionId;
     document.getElementById('rvRevieweeId').value = revieweeId;
@@ -237,14 +234,14 @@ function openReview(sessionId, revieweeId) {
     openModal('reviewModal');
 }
 
-// ── Star picker ───────────────────────────────────────────────────
+
 function setRating(val) {
     document.getElementById('ratingVal').value = val;
     document.querySelectorAll('.sp-star').forEach((s, i) => {
         s.classList.toggle('on', i < val);
     });
 }
-// Hover effect
+
 document.addEventListener('DOMContentLoaded', () => {
     const stars = document.querySelectorAll('.sp-star');
     stars.forEach((s, i) => {
@@ -256,11 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
             stars.forEach((st, j) => st.classList.toggle('on', j < cur));
         });
     });
-    // Init
+    
     setRating(5);
 });
 
-// ── Toast Notifications ───────────────────────────────────────────
+
 function showToast(msg, type = 'default') {
     const box = document.getElementById('toastBox');
     if (!box) return;
@@ -275,7 +272,7 @@ function showToast(msg, type = 'default') {
     }, 3500);
 }
 
-// Auto toast from URL params
+
 document.addEventListener('DOMContentLoaded', () => {
     const p = new URLSearchParams(window.location.search);
     if (p.get('success') === 'saved')     showToast('Profile updated successfully!', 'success');

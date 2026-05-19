@@ -10,11 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.*;
 import java.io.IOException;
 
-/**
- * Handles user issue reports to admin.
- * GET  /user/report               → show report form + user's past reports
- * POST /user/report (action=send) → submit a new report
- */
+
 @WebServlet("/user/report")
 public class ReportServlet extends HttpServlet {
 

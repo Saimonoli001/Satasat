@@ -59,8 +59,8 @@
 
                                 <div style="display:flex; gap:12px; align-items:center; border-top:1px solid var(--border); padding-top:16px;">
                                     <c:if test="${r.status eq 'OPEN'}">
-                                        <!-- Reply Form Trigger -->
-                                        <button class="btn-sm btn-edit" onclick="toggleReplyForm(${r.id})">
+                                        
+                                        <button class="btn-sm btn-edit" onclick="toggleReplyForm('${r.id}')">
                                             <i class="fas fa-reply"></i> Reply & Resolve
                                         </button>
                                         <form method="post" action="${pageContext.request.contextPath}/admin/reports" style="display:inline">
@@ -82,7 +82,7 @@
                                     </c:if>
                                 </div>
 
-                                <!-- Dynamic Reply Form -->
+                                
                                 <div id="replyForm-${r.id}" style="display:none; margin-top:16px; border-top:1px dashed var(--border); padding-top:16px;">
                                     <form method="post" action="${pageContext.request.contextPath}/admin/reports">
                                         <input type="hidden" name="action" value="reply">
@@ -93,7 +93,7 @@
                                         </div>
                                         <div style="display:flex; gap:8px;">
                                             <button type="submit" class="btn-sm btn-success">Send Reply</button>
-                                            <button type="button" class="btn-sm btn-outline-sm" onclick="toggleReplyForm(${r.id})">Cancel</button>
+                                            <button type="button" class="btn-sm btn-outline-sm" onclick="toggleReplyForm('${r.id}')">Cancel</button>
                                         </div>
                                     </form>
                                 </div>

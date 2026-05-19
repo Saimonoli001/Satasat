@@ -7,7 +7,7 @@
 <div class="page-wrap">
     <div class="skill-detail-layout">
 
-        <!-- Main column -->
+        
         <div class="sd-main">
             <div class="detail-card">
                 <div class="detail-badges">
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <%-- Exchange Request Box (logged-in non-owner) --%>
+            
             <c:if test="${not empty sessionScope.loggedInUser and sessionScope.loggedInUser.id ne skill.userId}">
                 <div class="exchange-box">
                     <h3><i class="fas fa-handshake"></i> Propose a Skill Exchange</h3>
@@ -64,7 +64,7 @@
                         </c:otherwise>
                     </c:choose>
 
-                        <%-- Wishlist toggle --%>
+                        
                     <form method="post" action="${pageContext.request.contextPath}/user/wishlist" class="mt-12">
                         <input type="hidden" name="skillId" value="${skill.id}">
                         <input type="hidden" name="redirect"
@@ -87,7 +87,7 @@
                 </div>
             </c:if>
 
-            <%-- Not logged in --%>
+            
             <c:if test="${empty sessionScope.loggedInUser}">
                 <div class="exchange-box login-prompt">
                     <i class="fas fa-lock"></i>
@@ -100,7 +100,7 @@
             </c:if>
         </div>
 
-        <!-- Sidebar -->
+        
         <aside class="sd-sidebar">
             <div class="teacher-card">
                 <h4>Offered by</h4>

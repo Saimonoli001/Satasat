@@ -8,4 +8,5 @@
     <p style="color:var(--text-mid);margin-bottom:32px">The page you're looking for doesn't exist or an error occurred.</p>
     <a href="${pageContext.request.contextPath}/home" class="btn-primary">Go Home</a>
 </div>
+
 <%@ include file="../includes/footer.jsp" %>

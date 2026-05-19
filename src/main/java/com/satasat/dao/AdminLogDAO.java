@@ -3,7 +3,7 @@ package com.satasat.dao;
 import com.satasat.utils.DBConnection;
 import java.sql.*;
 
-/** Writes entries to the admin_logs audit table. */
+
 public class AdminLogDAO {
 
     public void log(int adminId, String action, String targetType, int targetId, String details) {

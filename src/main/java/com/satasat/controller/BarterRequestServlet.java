@@ -31,10 +31,18 @@ public class BarterRequestServlet extends HttpServlet {
 
         switch (action == null ? "" : action) {
             case "send": {
+                String offeredIdStr = req.getParameter("offeredSkillId");
+                if (offeredIdStr == null || offeredIdStr.trim().isEmpty()) {
+                    
+                    req.getSession().setAttribute("errorMsg", "Please select a skill to offer.");
+                    res.sendRedirect(req.getContextPath() + "/skill/view?id=" + req.getParameter("requestedSkillId"));
+                    return;
+                }
+                
                 BarterRequest br = new BarterRequest();
                 br.setRequesterId(user.getId());
                 br.setReceiverId(Integer.parseInt(req.getParameter("receiverId")));
-                br.setOfferedSkillId(Integer.parseInt(req.getParameter("offeredSkillId")));
+                br.setOfferedSkillId(Integer.parseInt(offeredIdStr));
                 br.setRequestedSkillId(Integer.parseInt(req.getParameter("requestedSkillId")));
                 br.setMessage(req.getParameter("message"));
                 requestDAO.create(br);
@@ -55,7 +63,7 @@ public class BarterRequestServlet extends HttpServlet {
                         sess.setStatus("PENDING");
                         sessionDAO.create(sess);
 
-                        // Directly send Jitsi link to both user chat
+                        
                         Message msg = new Message();
                         msg.setRequestId(id);
                         msg.setSenderId(user.getId());

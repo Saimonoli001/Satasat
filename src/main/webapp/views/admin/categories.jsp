@@ -60,7 +60,7 @@
     </main>
 </div>
 
-<!-- ADD CATEGORY MODAL -->
+
 <div class="modal-overlay" id="addCatModal">
     <div class="modal-box">
         <div class="modal-hdr">
@@ -92,7 +92,7 @@
     </div>
 </div>
 
-<!-- EDIT CATEGORY MODAL -->
+
 <div class="modal-overlay" id="editCatModal">
     <div class="modal-box">
         <div class="modal-hdr">

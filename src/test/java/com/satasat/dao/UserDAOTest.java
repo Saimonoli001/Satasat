@@ -16,7 +16,7 @@ public class UserDAOTest {
     @BeforeAll
     public static void setUp() {
         userDAO = new UserDAO();
-        // Clean up if it already exists from a previous failed run
+        
         User existing = userDAO.findByEmail(TEST_EMAIL);
         if (existing != null) {
             userDAO.delete(existing.getId());

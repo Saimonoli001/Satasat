@@ -1,12 +1,12 @@
 package com.satasat.model;
 import java.sql.Timestamp;
 
-/** Maps to barter_requests table. */
+
 public class BarterRequest {
     private int id, requesterId, receiverId, offeredSkillId, requestedSkillId;
     private String message, counterMessage, status;
     private Timestamp createdAt, updatedAt;
-    // Joined
+    
     private String requesterName, requesterImage, receiverName, receiverImage;
     private String offeredSkillTitle, requestedSkillTitle;
 

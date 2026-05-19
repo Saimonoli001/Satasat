@@ -5,7 +5,7 @@ import com.satasat.utils.DBConnection;
 import java.sql.*;
 import java.util.*;
 
-/** CRUD for barter_requests table with full JOIN. */
+
 public class BarterRequestDAO {
 
     private static final String BASE_SQL =

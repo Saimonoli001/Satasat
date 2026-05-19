@@ -13,7 +13,7 @@
         </div>
 
         <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px;">
-            <!-- Left Side: Report Form -->
+            
             <div class="card" style="padding: 24px; background: white; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--card-sh);">
                 <h3 style="margin-bottom: 20px; font-weight: 800;"><i class="fas fa-paper-plane"></i> Submit a Ticket to Admin</h3>
 
@@ -57,7 +57,7 @@
                 </form>
             </div>
 
-            <!-- Right Side: Past Tickets -->
+            
             <div>
                 <h3 style="margin-bottom: 20px; font-weight: 800;"><i class="fas fa-history"></i> Ticket History</h3>
 

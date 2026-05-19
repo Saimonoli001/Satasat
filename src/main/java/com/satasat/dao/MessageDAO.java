@@ -39,7 +39,7 @@ public class MessageDAO {
         return list;
     }
 
-    /** For AJAX polling — return only messages newer than afterId */
+    
     public List<Message> findAfter(int requestId, int afterId) {
         List<Message> list = new ArrayList<>();
         String sql = "SELECT m.*, u.full_name AS sender_name, u.profile_image AS sender_image " +

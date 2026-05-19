@@ -18,12 +18,12 @@
             </a>
         </div>
 
-        <%-- Flash --%>
+        
         <c:if test="${not empty param.success}">
             <div class="alert alert-success"><i class="fas fa-check-circle"></i> Changes saved successfully.</div>
         </c:if>
 
-        <!-- KPI Cards -->
+        
         <div class="kpi-grid">
             <div class="kpi-card kpi-blue">
                 <i class="fas fa-star"></i>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <!-- Pending incoming requests -->
+        
         <c:if test="${fn:length(incoming) > 0}">
             <div class="dash-section">
                 <h2><i class="fas fa-bell"></i> Pending Requests
@@ -70,7 +70,7 @@
             </div>
         </c:if>
 
-        <!-- My Skills preview -->
+        
         <div class="dash-section">
             <div class="section-hdr">
                 <h2><i class="fas fa-star"></i> My Skills</h2>
@@ -99,7 +99,7 @@
             </c:choose>
         </div>
 
-        <!-- Recent Reviews -->
+        
         <c:if test="${fn:length(myReviews) > 0}">
             <div class="dash-section">
                 <h2><i class="fas fa-comments"></i> Recent Reviews</h2>

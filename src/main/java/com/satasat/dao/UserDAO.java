@@ -7,15 +7,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Data-Access Object for the users table.
- * All queries use PreparedStatement to prevent SQL injection.
- */
+
 public class UserDAO {
 
-    // ----------------------------------------------------------------
-    // READ
-    // ----------------------------------------------------------------
+    
+    
+    
 
     public User findById(int id) {
         String sql = "SELECT * FROM users WHERE id = ?";
@@ -81,9 +78,9 @@ public class UserDAO {
         return 0;
     }
 
-    // ----------------------------------------------------------------
-    // WRITE
-    // ----------------------------------------------------------------
+    
+    
+    
 
     public int create(User user) {
         String sql = "INSERT INTO users (full_name,email,password_hash,bio,location,role,status) " +
@@ -150,7 +147,7 @@ public class UserDAO {
         return false;
     }
 
-    /** Recalculates avg_rating and total_reviews from the reviews table. */
+    
     public void recalcRating(int userId) {
         String sql = "UPDATE users SET " +
                 "avg_rating=(SELECT COALESCE(AVG(rating),0) FROM reviews WHERE reviewee_id=?), " +
@@ -163,7 +160,7 @@ public class UserDAO {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    /** Returns up to `limit` users ordered by completed exchange count. */
+    
     public List<User> getMostActive(int limit) {
         List<User> list = new ArrayList<>();
         String sql =
@@ -181,9 +178,9 @@ public class UserDAO {
         return list;
     }
 
-    // ----------------------------------------------------------------
-    // PRIVATE
-    // ----------------------------------------------------------------
+    
+    
+    
 
     private User map(ResultSet rs) throws SQLException {
         User u = new User();

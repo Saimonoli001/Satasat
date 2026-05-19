@@ -3,17 +3,12 @@ package com.satasat.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * SHA-256 one-way password hashing utility.
- * Produces a 64-character lowercase hex digest.
- */
+
 public class PasswordHasher {
 
-    private PasswordHasher() {}   // utility class – no instances
+    private PasswordHasher() {}   
 
-    /**
-     * Returns the SHA-256 hex digest of the given plain-text password.
-     */
+    
     public static String hash(String plainText) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -28,9 +23,7 @@ public class PasswordHasher {
         }
     }
 
-    /**
-     * Compares a plain-text password against a stored hash.
-     */
+    
     public static boolean verify(String plainText, String storedHash) {
         if (plainText == null || storedHash == null) return false;
         return hash(plainText).equals(storedHash);

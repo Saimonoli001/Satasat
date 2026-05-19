@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <!-- Skills -->
+        
         <c:if test="${not empty skills}">
             <div class="dash-section">
                 <h2><i class="fas fa-star"></i> Skills Offered</h2>
@@ -65,7 +65,7 @@
             </div>
         </c:if>
 
-        <!-- Reviews -->
+        
         <c:if test="${not empty reviews}">
             <div class="dash-section">
                 <h2><i class="fas fa-comments"></i> Reviews</h2>
@@ -96,7 +96,7 @@
     </main>
 </div>
 
-<!-- Edit Profile Modal -->
+
 <div class="modal-overlay" id="editProfileModal">
     <div class="modal-box">
         <div class="modal-hdr">
@@ -129,7 +129,7 @@
     </div>
 </div>
 
-<!-- Upload Photo Modal -->
+
 <div class="modal-overlay" id="uploadModal">
     <div class="modal-box">
         <div class="modal-hdr">

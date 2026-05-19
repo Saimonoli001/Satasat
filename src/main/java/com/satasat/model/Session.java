@@ -1,7 +1,7 @@
 package com.satasat.model;
 import java.sql.Timestamp;
 
-/** Maps to sessions table – a confirmed learning session. */
+
 public class Session {
     private int id, requestId, requesterId, receiverId;
     private Timestamp scheduledDate, completedAt, createdAt;

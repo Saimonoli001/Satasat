@@ -62,7 +62,7 @@
     </main>
 </div>
 
-<!-- ADD SKILL MODAL -->
+
 <div class="modal-overlay" id="addSkillModal">
     <div class="modal-box">
         <div class="modal-hdr">
@@ -112,7 +112,7 @@
     </div>
 </div>
 
-<!-- EDIT SKILL MODAL -->
+
 <div class="modal-overlay" id="editSkillModal">
     <div class="modal-box">
         <div class="modal-hdr">

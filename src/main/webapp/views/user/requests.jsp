@@ -66,7 +66,7 @@
                             </c:if>
 
                             <div class="req-actions">
-                                    <%-- Receiver actions on PENDING / COUNTERED --%>
+
                                 <c:if test="${r.receiverId eq sessionScope.loggedInUser.id and
                            (r.status eq 'PENDING' or r.status eq 'COUNTERED')}">
                                     <form method="post" action="${pageContext.request.contextPath}/user/requests" style="display:inline">
@@ -79,12 +79,12 @@
                                         <input type="hidden" name="requestId" value="${r.id}">
                                         <button class="btn-sm btn-danger"><i class="fas fa-times"></i> Reject</button>
                                     </form>
-                                    <button class="btn-sm btn-warn" onclick="openCounter(${r.id})">
+                                    <button class="btn-sm btn-warn" onclick="openCounter('${r.id}')">
                                         <i class="fas fa-reply"></i> Counter
                                     </button>
                                 </c:if>
 
-                                    <%-- Requester cancel on PENDING --%>
+
                                 <c:if test="${r.requesterId eq sessionScope.loggedInUser.id and r.status eq 'PENDING'}">
                                     <form method="post" action="${pageContext.request.contextPath}/user/requests"
                                           onsubmit="return confirm('Cancel this request?')" style="display:inline">
@@ -94,9 +94,9 @@
                                     </form>
                                 </c:if>
 
-                                    <%-- Schedule session on ACCEPTED --%>
+
                                 <c:if test="${r.status eq 'ACCEPTED'}">
-                                    <button class="btn-sm btn-primary-sm" onclick="openSchedule(${r.id})">
+                                    <button class="btn-sm btn-primary-sm" onclick="openSchedule('${r.id}')">
                                         <i class="fas fa-calendar-plus"></i> Schedule Session
                                     </button>
                                     <a href="${pageContext.request.contextPath}/user/messages?requestId=${r.id}" class="btn-sm btn-success">
@@ -113,7 +113,7 @@
     </main>
 </div>
 
-<!-- Counter Offer Modal -->
+
 <div class="modal-overlay" id="counterModal">
     <div class="modal-box">
         <div class="modal-hdr">
@@ -136,7 +136,7 @@
     </div>
 </div>
 
-<!-- Schedule Session Modal -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <div class="modal-overlay" id="scheduleModal">

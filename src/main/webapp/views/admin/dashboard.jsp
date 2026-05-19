@@ -20,7 +20,7 @@
             <div class="kpi-card kpi-orange"><i class="fas fa-calendar-check"></i><div><strong>${completedSessions}</strong><span>Completed Sessions</span></div></div>
         </div>
 
-        <!-- Pending approvals -->
+        
         <c:if test="${fn:length(pendingUsers) > 0}">
             <div class="dash-section">
                 <h2><i class="fas fa-user-clock"></i> Pending Approvals
@@ -57,7 +57,7 @@
             </div>
         </c:if>
 
-        <!-- Recent users -->
+        
         <div class="dash-section">
             <div class="section-hdr">
                 <h2><i class="fas fa-users"></i> Recent Users</h2>

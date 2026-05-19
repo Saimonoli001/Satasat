@@ -8,27 +8,24 @@ import javax.servlet.http.*;
 import javax.servlet.*;
 import java.io.IOException;
 
-/**
- * Handles /login  /register  /logout
- * Part 3: Authentication with SHA-256, session management, cookies, validation.
- */
+
 @WebServlet(urlPatterns = {"/login", "/register", "/logout"})
 public class AuthServlet extends HttpServlet {
 
     private final UserDAO userDAO = new UserDAO();
 
-    // ---------------------------------------------------------------- GET
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
         String path = req.getServletPath();
 
-        // Logout
+        
         if ("/logout".equals(path)) {
             HttpSession sess = req.getSession(false);
             if (sess != null) sess.invalidate();
-            // Clear remember-me cookie
+            
             Cookie cookie = new Cookie("satasat_remember", "");
             cookie.setMaxAge(0);
             cookie.setPath(req.getContextPath().isEmpty() ? "/" : req.getContextPath());
@@ -37,7 +34,7 @@ public class AuthServlet extends HttpServlet {
             return;
         }
 
-        // Already logged in → bounce to appropriate dashboard
+        
         HttpSession sess = req.getSession(false);
         if (sess != null && sess.getAttribute("loggedInUser") != null) {
             User u = (User) sess.getAttribute("loggedInUser");
@@ -46,7 +43,7 @@ public class AuthServlet extends HttpServlet {
             return;
         }
 
-        // Check remember-me cookie for auto-login
+        
         if ("/login".equals(path)) {
             Cookie[] cookies = req.getCookies();
             if (cookies != null) {
@@ -74,7 +71,7 @@ public class AuthServlet extends HttpServlet {
         req.getRequestDispatcher(view).forward(req, res);
     }
 
-    // ---------------------------------------------------------------- POST
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
@@ -83,7 +80,7 @@ public class AuthServlet extends HttpServlet {
         else                          handleRegister(req, res);
     }
 
-    // ---------------------------------------------------------------- LOGIN
+    
     private void handleLogin(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
@@ -91,7 +88,7 @@ public class AuthServlet extends HttpServlet {
         String password  = req.getParameter("password");
         String remember  = req.getParameter("rememberMe");
 
-        // Validation
+        
         if (!ValidationUtils.notEmpty(email) || !ValidationUtils.notEmpty(password)) {
             req.setAttribute("error", "Email and password are required.");
             req.getRequestDispatcher("/views/public/login.jsp").forward(req, res);
@@ -122,12 +119,12 @@ public class AuthServlet extends HttpServlet {
             return;
         }
 
-        // Create session
+        
         HttpSession sess = req.getSession(true);
         sess.setAttribute("loggedInUser", user);
         sess.setAttribute("userId", user.getId());
 
-        // Remember-me cookie (30 days)
+        
         if ("on".equals(remember)) {
             Cookie cookie = new Cookie("satasat_remember",
                     user.getEmail() + "|" + user.getPasswordHash());
@@ -137,7 +134,7 @@ public class AuthServlet extends HttpServlet {
             res.addCookie(cookie);
         }
 
-        // Honour redirect param (set by AuthFilter)
+        
         String redirect = req.getParameter("redirect");
         if (ValidationUtils.notEmpty(redirect) && redirect.startsWith("/")) {
             res.sendRedirect(redirect);
@@ -147,7 +144,7 @@ public class AuthServlet extends HttpServlet {
                 (user.isAdmin() ? "/admin/dashboard" : "/user/dashboard"));
     }
 
-    // ---------------------------------------------------------------- REGISTER
+    
     private void handleRegister(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
@@ -157,7 +154,7 @@ public class AuthServlet extends HttpServlet {
         String confirm   = req.getParameter("confirmPassword");
         String location  = req.getParameter("location");
 
-        // --- Validation ---
+        
         if (!ValidationUtils.notEmpty(fullName)) {
             setErrorAndForward(req, res, "Full name is required.", email, null, null, location);
             return;
@@ -189,7 +186,7 @@ public class AuthServlet extends HttpServlet {
         user.setPasswordHash(PasswordHasher.hash(password));
         user.setLocation(location);
         user.setRole("USER");
-        user.setStatus("ACTIVE");   // Allows immediate login for testing
+        user.setStatus("ACTIVE");   
 
         int id = userDAO.create(user);
         if (id > 0) {

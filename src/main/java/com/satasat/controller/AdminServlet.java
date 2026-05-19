@@ -9,11 +9,7 @@ import javax.servlet.*;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
-/**
- * Part 4: Admin Dashboard – full CRUD for users and categories,
- * analytics, with proper validation and audit logging.
- * Also handles user reports management.
- */
+
 @WebServlet(urlPatterns = {
         "/admin/dashboard",
         "/admin/users",
@@ -31,7 +27,7 @@ public class AdminServlet extends HttpServlet {
     private final AdminLogDAO logDAO      = new AdminLogDAO();
     private final ReportDAO reportDAO     = new ReportDAO();
 
-    // ---------------------------------------------------------------- GET
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
@@ -78,7 +74,7 @@ public class AdminServlet extends HttpServlet {
         }
     }
 
-    // ---------------------------------------------------------------- POST
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
@@ -87,7 +83,7 @@ public class AdminServlet extends HttpServlet {
         String path = req.getServletPath();
         String act  = req.getParameter("action");
 
-        // ---- USER MANAGEMENT ----
+        
         if ("/admin/users".equals(path)) {
             int targetId = Integer.parseInt(req.getParameter("userId"));
             switch (act == null ? "" : act) {
@@ -112,7 +108,7 @@ public class AdminServlet extends HttpServlet {
             return;
         }
 
-        // ---- CATEGORY CRUD ----
+        
         if ("/admin/categories".equals(path)) {
             if ("add".equals(act)) {
                 String name = req.getParameter("name");
@@ -159,7 +155,7 @@ public class AdminServlet extends HttpServlet {
             return;
         }
 
-        // ---- REPORTS MANAGEMENT ----
+        
         if ("/admin/reports".equals(path)) {
             int reportId = Integer.parseInt(req.getParameter("reportId"));
             if ("reply".equals(act)) {

@@ -1,7 +1,7 @@
 package com.satasat.model;
 import java.sql.Timestamp;
 
-/** Maps to reviews table. */
+
 public class Review {
     private int id, sessionId, reviewerId, revieweeId, rating;
     private String comment;

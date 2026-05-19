@@ -215,6 +215,13 @@
                         <port>9090</port>
                     </httpConnector>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.mysql</groupId>
+                        <artifactId>mysql-connector-j</artifactId>
+                        <version>9.3.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
         </plugins>

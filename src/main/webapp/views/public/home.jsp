@@ -4,7 +4,7 @@
 <c:set var="pageTitle" value="Home"/>
 <%@ include file="../includes/header.jsp" %>
 
-<!-- HERO -->
+
 <section class="hero">
     <div class="hero-content">
         <div class="hero-pill animate-fade-up"><i class="fas fa-exchange-alt"></i> Free Skill Exchange Platform</div>
@@ -38,7 +38,7 @@
     </div>
 </section>
 
-<!-- CATEGORIES -->
+
 <section class="section-categories">
     <div class="container">
         <h2 class="section-title" style="color:white">Explore by Category</h2>
@@ -52,7 +52,7 @@
     </div>
 </section>
 
-<!-- FEATURED SKILLS -->
+
 <section class="section-white">
     <div class="container">
         <div class="section-hdr">
@@ -85,7 +85,7 @@
     </div>
 </section>
 
-<!-- HOW IT WORKS -->
+
 <section class="section-gray">
     <div class="container">
         <h2 class="section-title tc">How Satasat Works</h2>
@@ -118,7 +118,7 @@
     </div>
 </section>
 
-<!-- CTA -->
+
 <section class="section-cta">
     <h2>Ready to Start Learning?</h2>
     <p>Join a growing community of learners sharing skills across Nepal — completely free.</p>

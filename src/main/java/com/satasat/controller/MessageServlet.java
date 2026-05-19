@@ -10,12 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-/**
- * Handles private messaging between users in an accepted barter request.
- * GET  /user/messages?requestId=X       → show chat page
- * GET  /user/messages?requestId=X&poll=1&afterId=Y → return JSON for AJAX polling
- * POST /user/messages (action=send)    → save a new message
- */
+
 @WebServlet("/user/messages")
 public class MessageServlet extends HttpServlet {
 
@@ -37,13 +32,13 @@ public class MessageServlet extends HttpServlet {
         int requestId = Integer.parseInt(requestIdParam);
         BarterRequest br = requestDAO.findById(requestId);
 
-        // Security: only participants can chat
+        
         if (br == null || (br.getRequesterId() != user.getId() && br.getReceiverId() != user.getId())) {
             res.sendRedirect(req.getContextPath() + "/user/requests");
             return;
         }
 
-        // AJAX poll for new messages only
+        
         String poll = req.getParameter("poll");
         if ("1".equals(poll)) {
             int afterId = 0;
@@ -71,7 +66,7 @@ public class MessageServlet extends HttpServlet {
             return;
         }
 
-        // Full page load
+        
         req.setAttribute("barterRequest", br);
         req.setAttribute("messages", messageDAO.findByRequest(requestId));
         req.setAttribute("requestId", requestId);

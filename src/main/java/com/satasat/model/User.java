@@ -1,7 +1,7 @@
 package com.satasat.model;
 import java.sql.Timestamp;
 
-/** Maps to users table. Role: USER|ADMIN  Status: PENDING|ACTIVE|SUSPENDED */
+
 public class User {
     private int id;
     private String fullName, email, passwordHash, bio, profileImage, location, role, status;
