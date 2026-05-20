@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <aside class="dash-sidebar">
     <div class="sidebar-user">
@@ -9,7 +10,7 @@
         <h3><c:out value="${sessionScope.loggedInUser.fullName}"/></h3>
         <div class="sidebar-rating">
             <i class="fas fa-star"></i>
-            ${String.format("%.1f", sessionScope.loggedInUser.avgRating)}
+            <fmt:formatNumber value="${sessionScope.loggedInUser.avgRating}" minFractionDigits="1" maxFractionDigits="1"/>
             (${sessionScope.loggedInUser.totalReviews} reviews)
         </div>
     </div>

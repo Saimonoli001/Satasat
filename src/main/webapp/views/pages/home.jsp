@@ -76,7 +76,7 @@
                                  onerror="this.src='${pageContext.request.contextPath}/images/profiles/default.png'">
                             <span><c:out value="${skill.userName}"/></span>
                         </div>
-                        <div class="rating-badge"><i class="fas fa-star"></i> ${String.format("%.1f", skill.userAvgRating)}</div>
+                        <div class="rating-badge"><i class="fas fa-star"></i> <fmt:formatNumber value="${skill.userAvgRating}" minFractionDigits="1" maxFractionDigits="1"/></div>
                     </div>
                     <a href="${pageContext.request.contextPath}/skill/view?id=${skill.id}" class="btn-card-link">View Skill <i class="fas fa-arrow-right"></i></a>
                 </div>

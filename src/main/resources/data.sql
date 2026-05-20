@@ -7,7 +7,7 @@ INSERT INTO categories (name, description, icon) SELECT 'Fitness', 'Yoga, workou
 INSERT INTO categories (name, description, icon) SELECT 'Cooking', 'Culinary skills and recipes', 'fas fa-utensils' WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Cooking');
 
 
+-- Passwords: admin@satasat.com = Admin@123 | saimon@satasat.com = Test@1234
 INSERT INTO users (full_name, email, password_hash, role, status) SELECT 'System Admin', 'admin@satasat.com', 'e86f78a8a3caf0b60d8e74e5942aa6d86dc150cd3c03338aef25b7d2d7e3acc7', 'ADMIN', 'ACTIVE' WHERE NOT EXISTS (SELECT 1 FROM users WHERE email='admin@satasat.com');
 
-
-INSERT INTO users (full_name, email, password_hash, role, status) SELECT 'Saimon Tamang', 'saimon@satasat.com', '849f1575ccfbf3a4d6cf00e6c5641b7fd4da2ed3e212c2d79ba9161a5a432ff0', 'USER', 'ACTIVE' WHERE NOT EXISTS (SELECT 1 FROM users WHERE email='saimon@satasat.com');
+INSERT INTO users (full_name, email, password_hash, role, status) SELECT 'Saimon Oli', 'saimon@satasat.com', '849f1575ccfbf3a4d6cf00e6c5641b7fd4da2ed3e212c2d79ba9161a5a432ff0', 'USER', 'ACTIVE' WHERE NOT EXISTS (SELECT 1 FROM users WHERE email='saimon@satasat.com');

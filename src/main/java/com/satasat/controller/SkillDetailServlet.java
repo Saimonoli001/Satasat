@@ -33,6 +33,6 @@ public class SkillDetailServlet extends HttpServlet {
         if (loggedIn != null) {
             req.setAttribute("mySkills", new SkillDAO().findByUser(loggedIn.getId()));
         }
-        req.getRequestDispatcher("/views/public/skill-detail.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/pages/skill-detail.jsp").forward(req, res);
     }
 }

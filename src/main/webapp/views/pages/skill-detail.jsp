@@ -114,7 +114,7 @@
                             <c:forEach begin="1" end="5" var="i">
                                 <i class="fas fa-star ${i <= skill.userAvgRating ? 'star-on' : 'star-off'}"></i>
                             </c:forEach>
-                            <span>${String.format("%.1f", skill.userAvgRating)}</span>
+                            <span><fmt:formatNumber value="${skill.userAvgRating}" minFractionDigits="1" maxFractionDigits="1"/></span>
                         </div>
                     </div>
                 </div>

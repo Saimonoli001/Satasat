@@ -28,6 +28,6 @@ public class BrowseServlet extends HttpServlet {
         req.setAttribute("keyword",         keyword);
         req.setAttribute("selectedCat",     categoryId);
         req.setAttribute("selectedRating",  minRating);
-        req.getRequestDispatcher("/views/public/browse.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/pages/browse.jsp").forward(req, res);
     }
 }

@@ -22,6 +22,6 @@ public class HomeServlet extends HttpServlet {
         req.setAttribute("categories",   categoryDAO.findActive());
         req.setAttribute("totalUsers",   userDAO.countByRole("USER"));
         req.setAttribute("totalSkills",  skillDAO.countActive());
-        req.getRequestDispatcher("/views/public/home.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/pages/home.jsp").forward(req, res);
     }
 }

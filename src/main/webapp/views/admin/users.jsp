@@ -30,7 +30,7 @@
                             <td><c:out value="${u.location}"/></td>
                             <td><span class="role-pill">${u.role}</span></td>
                             <td><span class="status-tag st-${fn:toLowerCase(u.status)}">${u.status}</span></td>
-                            <td><i class="fas fa-star star-on"></i> ${String.format("%.1f",u.avgRating)}</td>
+                            <td><i class="fas fa-star star-on"></i> <fmt:formatNumber value="${u.avgRating}" minFractionDigits="1" maxFractionDigits="1"/></td>
                             <td>${u.createdAt}</td>
                             <td class="action-cell">
                                 <c:if test="${u.status eq 'PENDING'}">

@@ -73,7 +73,7 @@
                                 <div class="bar-label"><c:out value="${u.fullName}"/></div>
                                 <div class="bar-track">
                                     <div class="bar-fill bar-green" style="width:${pct < 8 ? 8 : pct}%">
-                                        <span>${String.format("%.1f", u.avgRating)} ★</span>
+                                        <span><fmt:formatNumber value="${u.avgRating}" minFractionDigits="1" maxFractionDigits="1"/> ★</span>
                                     </div>
                                 </div>
                             </div>

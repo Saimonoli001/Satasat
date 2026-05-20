@@ -67,7 +67,7 @@ public class AuthServlet extends HttpServlet {
         }
 
         String view = "/login".equals(path) ?
-                "/views/public/login.jsp" : "/views/public/register.jsp";
+                "/views/pages/login.jsp" : "/views/pages/register.jsp";
         req.getRequestDispatcher(view).forward(req, res);
     }
 
@@ -91,12 +91,12 @@ public class AuthServlet extends HttpServlet {
         
         if (!ValidationUtils.notEmpty(email) || !ValidationUtils.notEmpty(password)) {
             req.setAttribute("error", "Email and password are required.");
-            req.getRequestDispatcher("/views/public/login.jsp").forward(req, res);
+            req.getRequestDispatcher("/views/pages/login.jsp").forward(req, res);
             return;
         }
         if (!ValidationUtils.validEmail(email)) {
             req.setAttribute("error", "Please enter a valid email address.");
-            req.getRequestDispatcher("/views/public/login.jsp").forward(req, res);
+            req.getRequestDispatcher("/views/pages/login.jsp").forward(req, res);
             return;
         }
 
@@ -105,17 +105,17 @@ public class AuthServlet extends HttpServlet {
         if (user == null || !PasswordHasher.verify(password, user.getPasswordHash())) {
             req.setAttribute("error", "Invalid email or password. Please try again.");
             req.setAttribute("email", ValidationUtils.sanitize(email));
-            req.getRequestDispatcher("/views/public/login.jsp").forward(req, res);
+            req.getRequestDispatcher("/views/pages/login.jsp").forward(req, res);
             return;
         }
         if ("PENDING".equals(user.getStatus())) {
             req.setAttribute("error", "Your account is pending admin approval. Please wait.");
-            req.getRequestDispatcher("/views/public/login.jsp").forward(req, res);
+            req.getRequestDispatcher("/views/pages/login.jsp").forward(req, res);
             return;
         }
         if ("SUSPENDED".equals(user.getStatus())) {
             req.setAttribute("error", "Your account has been suspended. Contact the administrator.");
-            req.getRequestDispatcher("/views/public/login.jsp").forward(req, res);
+            req.getRequestDispatcher("/views/pages/login.jsp").forward(req, res);
             return;
         }
 
@@ -205,6 +205,6 @@ public class AuthServlet extends HttpServlet {
         req.setAttribute("email", email != null ? ValidationUtils.sanitize(email) : "");
         req.setAttribute("fullName", fullName != null ? ValidationUtils.sanitize(fullName) : "");
         req.setAttribute("location", location != null ? ValidationUtils.sanitize(location) : "");
-        req.getRequestDispatcher("/views/public/register.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/pages/register.jsp").forward(req, res);
     }
 }

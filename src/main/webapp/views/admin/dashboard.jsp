@@ -72,7 +72,7 @@
                             <td><c:out value="${u.fullName}"/></td>
                             <td><c:out value="${u.email}"/></td>
                             <td><span class="status-tag st-${fn:toLowerCase(u.status)}">${u.status}</span></td>
-                            <td><i class="fas fa-star star-on"></i> ${String.format("%.1f",u.avgRating)}</td>
+                            <td><i class="fas fa-star star-on"></i> <fmt:formatNumber value="${u.avgRating}" minFractionDigits="1" maxFractionDigits="1"/></td>
                             <td>${u.createdAt}</td>
                         </tr>
                     </c:forEach>

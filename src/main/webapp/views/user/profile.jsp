@@ -37,7 +37,7 @@
                         <c:forEach begin="1" end="5" var="i">
                             <i class="fas fa-star ${i <= profile.avgRating ? 'star-on' : 'star-off'}"></i>
                         </c:forEach>
-                        <span>${String.format("%.1f", profile.avgRating)} (${profile.totalReviews} reviews)</span>
+                        <span><fmt:formatNumber value="${profile.avgRating}" minFractionDigits="1" maxFractionDigits="1"/> (${profile.totalReviews} reviews)</span>
                     </div>
                     <p class="profile-bio"><c:out value="${not empty profile.bio ? profile.bio : 'No bio yet.'}"/></p>
                 </div>
